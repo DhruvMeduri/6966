@@ -28,13 +28,15 @@ args = TrainingArguments(
     evaluation_strategy = "epoch",
     save_strategy = "epoch",
     learning_rate=2e-5,
-    per_device_train_batch_size=1,
-    per_device_eval_batch_size=1,
+    per_device_train_batch_size=10,
+    per_device_eval_batch_size=10,
     gradient_accumulation_steps=4,
-    num_train_epochs=5,
+    num_train_epochs=2,
     weight_decay=0.01,
     load_best_model_at_end=True,
-    metric_for_best_model= 'accuracy'
+    metric_for_best_model= 'accuracy',
+    logging_dir="logs",
+    logging_steps=60
 )
 
 def compute_metrics(eval_pred):
