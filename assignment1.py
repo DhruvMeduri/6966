@@ -2,6 +2,7 @@ from datasets import load_dataset, load_metric
 from transformers import AutoTokenizer
 from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
 import numpy as np
+
 dataset = load_dataset("imdb")
 
 model_checkpoint = "microsoft/deberta-v3-large" 
@@ -20,16 +21,14 @@ print(tokenized_datasets)
 num_labels = 2
 model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=num_labels)
 
-metric = "accuracy"
-model_name = model_checkpoint.split("/")[-1]
 
 args = TrainingArguments(
     f"Test",
     evaluation_strategy = "epoch",
     save_strategy = "epoch",
     learning_rate=2e-5,
-    per_device_train_batch_size=200,
-    per_device_eval_batch_size=200,
+    per_device_train_batch_size=50,
+    per_device_eval_batch_size=50,
     num_train_epochs=5,
     weight_decay=0.01,
     load_best_model_at_end=True,

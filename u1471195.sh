@@ -13,9 +13,11 @@
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate CS6966
 
-mkdir -p /scratch/general/vast/u1471195/huggingface_cache
-export TRANSFORMERS_CACHE="/scratch/general/vast/u1471195/huggingface_cache"
+module load cuda/11.8.0
 
-OUT_DIR=/scratch/general/vast/u1471195/cs6966/assignment1/models
+mkdir -p ~/scratch/general/vast/u1471195/huggingface_cache
+export TRANSFORMERS_CACHE="~/scratch/general/vast/u1471195/huggingface_cache"
+
+OUT_DIR=~/scratch/general/vast/u1471195/cs6966/assignment1/models
 mkdir -p ${OUT_DIR}
 python ~/6966/assignment1.py --output_dir ${OUT_DIR}
