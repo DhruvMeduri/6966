@@ -21,14 +21,15 @@ print(tokenized_datasets)
 num_labels = 2
 model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=num_labels)
 
+metric = load_metric('accuracy')
 
 args = TrainingArguments(
     f"Test",
     evaluation_strategy = "epoch",
     save_strategy = "epoch",
     learning_rate=2e-5,
-    per_device_train_batch_size=50,
-    per_device_eval_batch_size=50,
+    per_device_train_batch_size=15,
+    per_device_eval_batch_size=15,
     num_train_epochs=5,
     weight_decay=0.01,
     load_best_model_at_end=True,
