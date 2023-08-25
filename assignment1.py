@@ -26,7 +26,7 @@ metric = load_metric('accuracy')
 args = TrainingArguments(
     f"Test2",
     evaluation_strategy = "steps",
-    save_strategy = "epoch",
+    save_strategy = "steps",
     learning_rate=2e-5,
     per_device_train_batch_size=1,
     per_device_eval_batch_size=1,
