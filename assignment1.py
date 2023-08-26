@@ -81,15 +81,17 @@ failures = []
 for i in range(len(preds)):
     
     if preds[i] != predictions.label_ids[i]:
-        #print(tokenized_datasets["test"]["text"][i])
         failures.append(i)
 
 
 
 random.shuffle(failures)
+final_list = []
 
 for i in range(10):
 
     ele = {"Review":tokenized_datasets["test"]["text"][failures[i]],"label":int(predictions.label_ids[failures[i]]),"predicted":int(preds[failures[i]])}
-    with open("output.json", "w") as outfile:
-        json.dump(ele, outfile)
+    final_list.append(ele)
+    
+with open("output.json", "w") as outfile:
+    json.dump(final_list, outfile)
