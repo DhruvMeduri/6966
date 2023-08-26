@@ -69,7 +69,7 @@ print("To check the accuracy before training\n")
 
 predictions = trainer.predict(tokenized_datasets["test"])
 preds = np.argmax(predictions.predictions, axis=1)
-metric.compute(predictions=preds, references=predictions.label_ids)
+print(metric.compute(predictions=preds, references=predictions.label_ids))
 
 trainer.train()
 
@@ -90,6 +90,6 @@ random.shuffle(failures)
 
 for i in range(10):
 
-    ele = {"Review":tokenized_datasets["test"]["text"][failures[i]],"label":predictions.label_ids[failures[i]],"predicted":preds[failures[i]]}
+    ele = {"Review":tokenized_datasets["test"]["text"][failures[i]],"label":int(predictions.label_ids[failures[i]]),"predicted":int(preds[failures[i]])}
     with open("output.json", "w") as outfile:
         json.dump(ele, outfile)
