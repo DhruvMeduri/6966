@@ -17,7 +17,7 @@ module load cuda/11.8.0
 
 mkdir -p /scratch/general/vast/u1471195/huggingface_cache
 export TRANSFORMERS_CACHE="/scratch/general/vast/u1471195/huggingface_cache"
-export HF_DATASETS_CACHE="/scratch/general/vast/u6045151/huggingface_cache"
+export HF_DATASETS_CACHE="/scratch/general/vast/u1471195/huggingface_cache"
 
 
 OUT_DIR=/scratch/general/vast/u1471195/cs6966/assignment1/models
