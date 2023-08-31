@@ -66,7 +66,6 @@ trainer = Trainer(
 
 # To check the accuracy before training
 print("To check the accuracy before training\n")
-
 predictions = trainer.predict(tokenized_datasets["test"])
 preds = np.argmax(predictions.predictions, axis=1)
 print(metric.compute(predictions=preds, references=predictions.label_ids))
@@ -94,4 +93,5 @@ for i in range(10):
     final_list.append(ele)
     
 with open("output.json", "w") as outfile:
+    
     json.dump(final_list, outfile)
