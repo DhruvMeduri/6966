@@ -72,8 +72,10 @@ print(metric.compute(predictions=preds, references=predictions.label_ids))
 
 trainer.train()
 
+print("To check the accuracy after training\n")
 predictions = trainer.predict(tokenized_datasets["test"])
 preds = np.argmax(predictions.predictions, axis=1)
+print(metric.compute(predictions=preds, references=predictions.label_ids))
 
 failures = []
 
